@@ -44,7 +44,7 @@
 
       const slider = document.querySelector('.slider');
 
-      slider.addEventListener('change', (e) => {
+      slider.addEventListener('input', (e) => {
         document.body.style.setProperty("--threshold", `${e.target.value}%`);
       });
 

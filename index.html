@@ -9,7 +9,7 @@
     <video id="videoElement" autoplay></video>
 
     <div class="control-bar">
-      <button id="startButton">Start camera</button>
+      <button id="startButton">📸 Start camera</button>
       <!-- <button id="captureButton">Take photo</button> -->
 
       <div class="slider">
@@ -38,14 +38,15 @@
          border-radius: 999px;
          display: flex;
          gap: 1em;
-         padding: 1.5em;
+         padding: 1em;
       }
 
       .slider {
+        display: none;
         flex-grow: 1;
-        display: flex;
         align-items: center;
         justify-content: center;
+        padding: 1em;
       }
 
       .slider input {
@@ -53,8 +54,10 @@
       }
 
       button {
-        padding: 0.5em 1em;
+        width: 100%;
         border-radius: 999px;
+        font-size: 1.25em;
+        padding: 0.5em 1em;
       }
 
       #videoElement {
@@ -85,6 +88,8 @@
             stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
             videoElement.srcObject = stream;
             startButton.disabled = true;
+            startButton.style.display = 'none';
+            slider.style.display = "flex";
         } catch (error) {
             console.error('Error accessing camera:', error);
         }

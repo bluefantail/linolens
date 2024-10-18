@@ -9,6 +9,19 @@
     <video id="videoElement" autoplay></video>
     <button id="startButton">Start camera</button>
     <button id="captureButton">Capture Photo</button>
+
+    <div class="slider">
+      <input type="range" id="temp1" name="temp1" list="values" />
+    </div>
+
+    <datalist id="values">
+      <option value="0" label="0"></option>
+      <option value="25" label="25"></option>
+      <option value="50" label="50"></option>
+      <option value="75" label="75"></option>
+      <option value="100" label="100"></option>
+    </datalist>
+
     <canvas id="canvasElement" style="display: none;"></canvas>
     <img id="photoElement" style="display: none;">
 
@@ -28,6 +41,12 @@
       const photoElement = document.getElementById('photoElement');
       const startButton = document.getElementById('startButton');
       const captureButton = document.getElementById('captureButton');
+
+      const slider = document.querySelector('.slider');
+
+      slider.addEventListener('change', (e) => {
+        document.body.style.setProperty("--threshold", e.target.value);
+      });
 
       let stream;
 

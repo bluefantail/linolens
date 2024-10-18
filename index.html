@@ -87,8 +87,8 @@
         try {
             stream = await navigator.mediaDevices.getUserMedia({
               video: { facingMode: 'environment' },
-              width: { ideal: 2500 },
-						  height: { ideal: 2500 }
+              width: 2500,
+						  height: 2500
             });
             videoElement.srcObject = stream;
             startButton.disabled = true;

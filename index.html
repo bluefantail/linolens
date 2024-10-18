@@ -10,7 +10,7 @@
 
     <div class="control-bar">
       <button id="startButton">Start camera</button>
-      <button id="captureButton">Take photo</button>
+      <!-- <button id="captureButton">Take photo</button> -->
 
       <div class="slider">
         <input type="range" min="-55" max="600" />
@@ -70,7 +70,7 @@
       const canvasElement = document.getElementById('canvasElement');
       const photoElement = document.getElementById('photoElement');
       const startButton = document.getElementById('startButton');
-      const captureButton = document.getElementById('captureButton');
+      // const captureButton = document.getElementById('captureButton');
 
       const slider = document.querySelector('.slider');
 
@@ -81,27 +81,27 @@
       let stream;
 
       async function startWebcam() {
-          try {
-              stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-              videoElement.srcObject = stream;
-              startButton.disabled = true;
-          } catch (error) {
-              console.error('Error accessing camera:', error);
-          }
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+            videoElement.srcObject = stream;
+            startButton.disabled = true;
+        } catch (error) {
+            console.error('Error accessing camera:', error);
+        }
       }
 
       startButton.addEventListener('click', startWebcam);
 
       function capturePhoto() {
-          canvasElement.width = videoElement.videoWidth;
-          canvasElement.height = videoElement.videoHeight;
-          canvasElement.getContext('2d').drawImage(videoElement, 0, 0);
-          const photoDataUrl = canvasElement.toDataURL('image/jpeg');
-          photoElement.src = photoDataUrl;
-          photoElement.style.display = 'block';
+        canvasElement.width = videoElement.videoWidth;
+        canvasElement.height = videoElement.videoHeight;
+        canvasElement.getContext('2d').drawImage(videoElement, 0, 0);
+        const photoDataUrl = canvasElement.toDataURL('image/jpeg');
+        photoElement.src = photoDataUrl;
+        photoElement.style.display = 'block';
       }
 
-      captureButton.addEventListener('click', capturePhoto);
+      // captureButton.addEventListener('click', capturePhoto);
     </script>
   </body>
 </html>

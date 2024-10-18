@@ -12,6 +12,16 @@
     <canvas id="canvasElement" style="display: none;"></canvas>
     <img id="photoElement" style="display: none;">
 
+    <style>
+      :root {
+        --threshold:50%;
+      }
+
+      #canvasElement {
+        filter: brightness(calc(100% + var(--threshold))) grayscale(100%) contrast(1000%);
+      }
+    </style>
+
     <script>
       const videoElement = document.getElementById('videoElement');
       const canvasElement = document.getElementById('canvasElement');

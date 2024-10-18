@@ -7,30 +7,43 @@
   </head>
   <body>
     <video id="videoElement" autoplay></video>
-    <button id="startButton">Start camera</button>
-    <button id="captureButton">Capture Photo</button>
 
-    <div class="slider">
-      <input type="range" id="temp1" name="temp1" list="values" />
+    <div class="control-bar">
+      <button id="startButton">Start camera</button>
+      <button id="captureButton">Capture Photo</button>
+
+      <div class="slider">
+        <input type="range" min="-55" max="600" />
+      </div>
+
+      <canvas id="canvasElement" style="display: none;"></canvas>
+      <img id="photoElement" style="display: none;">
     </div>
-
-    <datalist id="values">
-      <option value="0" label="0"></option>
-      <option value="25" label="25"></option>
-      <option value="50" label="50"></option>
-      <option value="75" label="75"></option>
-      <option value="100" label="100"></option>
-    </datalist>
-
-    <canvas id="canvasElement" style="display: none;"></canvas>
-    <img id="photoElement" style="display: none;">
 
     <style>
       :root {
-        --threshold:50%;
+        --threshold: 20%;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .control-bar {
+         background-color: white;
+         position: fixed;
+         inset-inline-start: 1em;
+         inset-inline-end: 1em;
+         inset-block-end: 1em;
+         border-radius: 12px;
+         display: flex;
+         gap: 16px;
       }
 
       #videoElement {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
         filter: brightness(calc(100% + var(--threshold))) grayscale(100%) contrast(1000%);
       }
     </style>

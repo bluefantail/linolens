@@ -86,9 +86,11 @@
       async function startWebcam() {
         try {
             stream = await navigator.mediaDevices.getUserMedia({
-              video: { facingMode: 'environment' },
-              width: 2500,
-						  height: 2500
+              video: {
+                facingMode: 'environment',
+                width: 2500,
+                height: 2500
+              }
             });
             videoElement.srcObject = stream;
             startButton.disabled = true;
